@@ -32,8 +32,9 @@ app.post("/webhook/saweria", async (req, res) => {
         body: JSON.stringify(payload),
       }
     );
-    console.log("Forwarded to Roblox:", r.status);
-    res.sendStatus(200);
+   const responseText = await r.text();
+console.log("Forwarded to Roblox:", r.status, responseText);
+res.sendStatus(200);
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
